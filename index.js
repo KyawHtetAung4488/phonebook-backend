@@ -24,11 +24,11 @@ app.get('/api/persons', (req, res) => {
 })
 
 // get phone-book info
-app.get('/api/info', (req, res) => {
-    const numOfPeople = persons.length
+app.get('/info', (req, res) => {
     const date = new Date()
-
-    res.send(`<p>Phone book has info for ${numOfPeople} people <br/> <br/> ${date}</p>`)
+    Person.find({}).then(person =>{
+      res.send(`<p>Phone book has info for ${person.length} people <br/> <br/> ${date}</p>`)
+    })
 })
 
 // get person info
